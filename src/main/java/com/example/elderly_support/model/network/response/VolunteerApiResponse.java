@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -16,7 +17,7 @@ public class VolunteerApiResponse {
 
     private Long v_id;
 
-    private LocalDateTime v_birth_date;
+    private LocalDate v_birth_date;
 
     private String v_name;
 
@@ -26,7 +27,7 @@ public class VolunteerApiResponse {
 
     private String v_sex;
 
-    private LocalDateTime v_period;
+    private LocalDate v_period;
 
     private V_expertise_enum v_expertise1;
 

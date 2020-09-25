@@ -10,6 +10,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class Volunteer { // 자원봉사자 (개체)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long v_id;
 
-	private LocalDateTime v_birth_date;
+	private LocalDate v_birth_date;
 
 	private String v_name;
 
@@ -37,7 +38,7 @@ public class Volunteer { // 자원봉사자 (개체)
 
 	private String v_sex;
 
-	private LocalDateTime v_period;
+	private LocalDate v_period;
 
 	@Enumerated(EnumType.STRING)
 	private V_expertise_enum v_expertise1;

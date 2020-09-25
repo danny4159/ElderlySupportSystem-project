@@ -8,6 +8,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -24,9 +26,7 @@ public class VolunteerApiLogicService extends BaseService<VolunteerApiRequest, V
     }
 
     @Override
-    public Header<VolunteerApiResponse> read(Long id) {
-        return null;
-    }
+    public Header<VolunteerApiResponse> read(Long id) { return null; }
 
     @Override
     public Header<VolunteerApiResponse> update(Header<VolunteerApiRequest> request) {
@@ -36,5 +36,23 @@ public class VolunteerApiLogicService extends BaseService<VolunteerApiRequest, V
     @Override
     public Header delete(Long id) {
         return null;
+    }
+
+    public Header<VolunteerApiResponse> response(Volunteer volunteer) {
+        // volunteer -> volunteerApiResponse
+        VolunteerApiResponse elderlyApiResponse = VolunteerApiResponse.builder()
+                .v_id(volunteer.getV_id())
+                .v_name(volunteer.getV_name())
+                .build();
+
+        return Header.OK(elderlyApiResponse);
+    }
+
+    public Header<List<VolunteerApiResponse>> read_all() { // 봉사자 전체 조회
+        List<Volunteer> volunteerList = baseRepository.findAll();
+        List<VolunteerApiResponse> volunteerApiResponseList = volunteerList.stream()
+                .map(volunteer -> response(volunteer).getData())
+                .collect(Collectors.toList());
+        return Header.OK(volunteerApiResponseList);
     }
 }

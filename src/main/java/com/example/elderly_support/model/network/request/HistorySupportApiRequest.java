@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -16,7 +18,7 @@ public class HistorySupportApiRequest {
 
     private Integer hs_support_fund;
 
-    private LocalDateTime hs_support_date;
+    private LocalDate hs_support_date;
 
     private Long e_id;
 

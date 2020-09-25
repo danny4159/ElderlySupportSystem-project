@@ -1,7 +1,6 @@
 package com.example.elderly_support.model.entity1;
 
 
-import com.example.elderly_support.model.entity.Item;
 import com.example.elderly_support.model.enumclass.E_hope_enum;
 import lombok.*;
 import lombok.experimental.Accessors;
@@ -12,6 +11,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -39,11 +39,11 @@ public class Elderly { // 노인 (개체)
 
 	private String e_emergency_no;
 
-	private LocalDateTime e_period;
+	private LocalDate e_period; // 희망활동 종료일
 
 	private String e_address;
 
-	private LocalDateTime e_birth_date;
+	private LocalDate e_birth_date; // 생년월일
 
 	private String e_name;
 

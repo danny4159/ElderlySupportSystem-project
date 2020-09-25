@@ -9,6 +9,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
@@ -27,7 +28,7 @@ public class HistorySupport { // 지원내역 (개체)
 
 	private Integer hs_support_fund;
 
-	private LocalDateTime hs_support_date;
+	private LocalDate hs_support_date;
 
 	@CreatedDate
 	private LocalDateTime createdAt;

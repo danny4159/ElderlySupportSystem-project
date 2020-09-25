@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -26,11 +27,11 @@ public class ElderlyApiResponse {
 
     private String e_emergency_no;
 
-    private LocalDateTime e_period;
+    private LocalDate e_period;
 
     private String e_address;
 
-    private LocalDateTime e_birth_date;
+    private LocalDate e_birth_date;
 
     private String e_name;
 

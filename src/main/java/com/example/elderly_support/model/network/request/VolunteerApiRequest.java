@@ -14,6 +14,7 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class VolunteerApiRequest {
 
     private Long v_id;
 
-    private LocalDateTime v_birth_date;
+    private LocalDate v_birth_date;
 
     private String v_name;
 
@@ -35,7 +36,7 @@ public class VolunteerApiRequest {
 
     private String v_sex;
 
-    private LocalDateTime v_period;
+    private LocalDate v_period;
 
     private V_expertise_enum v_expertise1;
 

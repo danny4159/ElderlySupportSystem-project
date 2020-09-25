@@ -13,6 +13,7 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -34,11 +35,11 @@ public class ElderlyApiRequest {
 
     private String e_emergency_no;
 
-    private LocalDateTime e_period;
+    private LocalDate e_period;
 
     private String e_address;
 
-    private LocalDateTime e_birth_date;
+    private LocalDate e_birth_date;
 
     private String e_name;
 

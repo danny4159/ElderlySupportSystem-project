@@ -54,7 +54,27 @@ public class ElderlyApiLogicService extends BaseService<ElderlyApiRequest, Elder
 
     @Override
     public Header<ElderlyApiResponse> update(Header<ElderlyApiRequest> request) {
-        return null;
+        ElderlyApiRequest elderlyApiRequest = request.getData();
+
+        Optional<Elderly> optional = baseRepository.findById(elderlyApiRequest.getE_id());
+
+        optional.map(elderly -> {
+            elderly.setE_income(elderlyApiRequest.getE_income())
+                    .setE_sex(elderlyApiRequest.getE_sex())
+                    .setE_tel_no(elderlyApiRequest.getE_tel_no())
+                    .setE_emergency_no(elderlyApiRequest.getE_emergency_no())
+                    .setE_period(elderlyApiRequest.getE_period())
+                    .setE_address(elderlyApiRequest.getE_address())
+                    .setE_birth_date(elderlyApiRequest.getE_birth_date())
+                    .setE_name(elderlyApiRequest.getE_name())
+                    .setE_hope1(elderlyApiRequest.getE_hope1())
+                    .setE_hope2(elderlyApiRequest.getE_hope2());
+            return elderly;
+        });
+        return optional
+                .map(elderly -> {return baseRepository.save(elderly);})
+                .map(elderly -> response(elderly))
+                .orElseGet(() -> Header.ERROR("데이터 없음"));
     }
 
     @Override

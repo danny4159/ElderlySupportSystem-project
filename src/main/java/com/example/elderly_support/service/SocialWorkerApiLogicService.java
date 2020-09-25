@@ -54,7 +54,7 @@ public class SocialWorkerApiLogicService extends BaseService<SocialWorkerApiRequ
 
     public Header<SocialWorkerApiResponse> response(SocialWorker socialWorker){
 
-        SocialWorkerApiResponse sociApiResponse = SocialWorkerApiResponse.builder()
+        SocialWorkerApiResponse socialWorkerApiResponse = SocialWorkerApiResponse.builder()
                 .s_id(socialWorker.getS_id())
                 .s_password(socialWorker.getS_password())
                 .s_name(socialWorker.getS_name())
@@ -63,6 +63,6 @@ public class SocialWorkerApiLogicService extends BaseService<SocialWorkerApiRequ
                 .wc_code(socialWorker.getWelfareCenter().getWc_code())
                 .build();
 
-        return Header.OK(sociApiResponse);
+        return Header.OK(socialWorkerApiResponse);
     }
 }

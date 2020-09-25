@@ -40,12 +40,12 @@ public class VolunteerApiLogicService extends BaseService<VolunteerApiRequest, V
 
     public Header<VolunteerApiResponse> response(Volunteer volunteer) {
         // volunteer -> volunteerApiResponse
-        VolunteerApiResponse elderlyApiResponse = VolunteerApiResponse.builder()
+        VolunteerApiResponse volunteerApiResponse = VolunteerApiResponse.builder()
                 .v_id(volunteer.getV_id())
                 .v_name(volunteer.getV_name())
                 .build();
 
-        return Header.OK(elderlyApiResponse);
+        return Header.OK(volunteerApiResponse);
     }
 
     public Header<List<VolunteerApiResponse>> read_all() { // 봉사자 전체 조회

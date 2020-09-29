@@ -4,43 +4,22 @@ import com.example.elderly_support.model.entity1.SocialWorker;
 import com.example.elderly_support.model.network.Header;
 import com.example.elderly_support.model.network.request.SocialWorkerApiRequest;
 import com.example.elderly_support.model.network.response.SocialWorkerApiResponse;
-import org.springframework.data.domain.Pageable;
+import com.example.elderly_support.repository.SocialWorkerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class SocialWorkerApiLogicService extends BaseService<SocialWorkerApiRequest, SocialWorkerApiResponse, SocialWorker> {
+public class SocialWorkerApiLogicService {
 
-    @Override
-    public Header<List<SocialWorkerApiResponse>> search(Pageable pageable) {
-        return null;
-    }
-
-    @Override
-    public Header<SocialWorkerApiResponse> create(Header<SocialWorkerApiRequest> request) {
-        return null;
-    }
-
-    @Override
-    public Header<SocialWorkerApiResponse> read(Long id) {
-        return null;
-    }
-
-    @Override
-    public Header<SocialWorkerApiResponse> update(Header<SocialWorkerApiRequest> request) {
-        return null;
-    }
-
-    @Override
-    public Header delete(Long id) {
-        return null;
-    }
+    @Autowired
+    SocialWorkerRepository socialWorkerRepository;
 
 
     public Header<SocialWorkerApiResponse> LogIn(Long id,String password) {
-        Optional<SocialWorker> optional = baseRepository.findById(id);
+        Optional<SocialWorker> optional = socialWorkerRepository.findById(id);
 
         if(password == optional.get().getS_password()) {
             return optional

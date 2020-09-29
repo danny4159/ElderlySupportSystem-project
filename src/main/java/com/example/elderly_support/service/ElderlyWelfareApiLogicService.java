@@ -2,14 +2,12 @@ package com.example.elderly_support.service;
 
 import com.example.elderly_support.model.entity1.Elderly;
 import com.example.elderly_support.model.entity1.ElderlyWelfare;
-import com.example.elderly_support.model.entity1.Volunteer;
 import com.example.elderly_support.model.network.Header;
 import com.example.elderly_support.model.network.request.ElderlyWelfareApiRequest;
 import com.example.elderly_support.model.network.response.ElderlyWelfareApiResponse;
-import com.example.elderly_support.model.network.response.VolunteerApiResponse;
 import com.example.elderly_support.repository.ElderlyRepository;
+import com.example.elderly_support.repository.ElderlyWelfareRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -18,38 +16,16 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class ElderlyWelfareApiLogicService extends BaseService<ElderlyWelfareApiRequest, ElderlyWelfareApiResponse, ElderlyWelfare> {
+public class ElderlyWelfareApiLogicService {
+
+    @Autowired
+    ElderlyWelfareRepository elderlyWelfareRepository;
 
     @Autowired
     ElderlyRepository elderlyRepository;
 
-    @Override
-    public Header<List<ElderlyWelfareApiResponse>> search(Pageable pageable) {
-        return null;
-    }
 
-    @Override
-    public Header<ElderlyWelfareApiResponse> create(Header<ElderlyWelfareApiRequest> request) {
-        return null;
-    }
-
-    @Override
-    public Header<ElderlyWelfareApiResponse> read(Long id) {
-        return null;
-    }
-
-    @Override
-    public Header<ElderlyWelfareApiResponse> update(Header<ElderlyWelfareApiRequest> request) {
-        return null;
-    }
-
-    @Override
-    public Header delete(Long id) {
-        return null;
-    }
-
-
-    public Header<List<ElderlyWelfareApiResponse>> elderlyElderlyWelfareMatching(Long e_id) {
+    public Header<List<ElderlyWelfareApiResponse>> matchingElderlyAndElderlyWelfare(Long e_id) {
         //1. id로 노인 객체 가져오기
         //2. 노인제도 모두 가져오기(List)
         //3. 노인제도에서 각각 노인의 나이/소득/거주지 를 비교해서 filter하기
@@ -62,7 +38,7 @@ public class ElderlyWelfareApiLogicService extends BaseService<ElderlyWelfareApi
             int optionalIncome = optional.get().getE_income();
 
         //2.
-        List<ElderlyWelfare> elderlyWelfareList = baseRepository.findAll();
+        List<ElderlyWelfare> elderlyWelfareList = elderlyWelfareRepository.findAll();
 
         //3.
         List<ElderlyWelfareApiResponse> elderlyWelfareApiResponseList = elderlyWelfareList.stream()
@@ -75,6 +51,7 @@ public class ElderlyWelfareApiLogicService extends BaseService<ElderlyWelfareApi
         //4.
         return Header.OK(elderlyWelfareApiResponseList);
     }
+
 
     public Header<ElderlyWelfareApiResponse> response(ElderlyWelfare elderlyWelfare) {
         // elderlyWelfare -> elderlyWelfareApiResponse

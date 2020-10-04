@@ -9,10 +9,7 @@ import com.example.elderly_support.model.network.response.HistorySupportApiRespo
 import com.example.elderly_support.service.HistorySupportApiLogicService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -31,7 +28,7 @@ public class HistorySupportApiController {
 
 
     @PostMapping("/createHistorySupport")
-    public Header<HistorySupportApiResponse> createHistorySupportByElderlyAndElderlyWelfare(Header<ElderlyApiRequest> e_request, Header<ElderlyWelfareApiRequest> ew_request){
+    public Header<HistorySupportApiResponse> createHistorySupportByElderlyAndElderlyWelfare(@RequestBody Header<ElderlyApiRequest> e_request, @RequestBody Header<ElderlyWelfareApiRequest> ew_request){
         log.info("{}",e_request);
         log.info("{}",ew_request);
         return historySupportApiLogicService.createHistorySupportByElderlyAndElderlyWelfare(e_request,ew_request);
